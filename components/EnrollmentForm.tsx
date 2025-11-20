@@ -16,7 +16,7 @@ export const EnrollmentForm: React.FC = () => {
   // 1. Создайте скрипт в Google Таблице (как я описывал в инструкции).
   // 2. Скопируйте URL веб-приложения (Web App URL).
   // 3. Вставьте его ниже в кавычки.
-  const GOOGLE_SCRIPT_URL = ""; // <-- ВСТАВЬТЕ ССЫЛКУ СЮДА (Пример: "https://script.google.com/.../exec")
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/AKfycbwas5u7P5drUHCZb1VVtDUK8LUV1z4tIL3GHVdG5IlLNxMqZfdKaUVLNrwiD_ovPeoa/exec"; // <-- ВСТАВЬТЕ ССЫЛКУ СЮДА (Пример: "https://script.google.com/.../exec")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
