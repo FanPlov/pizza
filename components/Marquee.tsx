@@ -1,15 +1,19 @@
+
 import React from 'react';
 import { Pizza } from 'lucide-react';
 
 export const Marquee: React.FC = () => {
-  // Simplified items for better performance
+  // --------------------------------------------------------------------------
+  // 🔡 БЕГУЩАЯ СТРОКА
+  // Измените слова в кавычках, чтобы поменять текст в бегущей строке.
+  // --------------------------------------------------------------------------
   const items = [
     "PIZZA ACADEMY", "FUTURE", "SUCCESS", "EDUCATION", 
     "IELTS", "SPEAKING", "GRAMMAR", "FUN", 
     "NATIVE SPEAKERS", "GLOBAL"
   ];
 
-  // Triple duplicate for smoother seamless loop with translate3d(-50%)
+  // Для плавности (дублируем список)
   const displayItems = [...items, ...items, ...items];
 
   return (

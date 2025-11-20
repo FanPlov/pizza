@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
 import { useSettings } from '../contexts/SettingsContext';
@@ -6,18 +7,20 @@ export const Reviews: React.FC = () => {
   const { t } = useSettings();
 
   // --------------------------------------------------------------------------
-  // ИЗМЕНИТЕ ОТЗЫВЫ ЗДЕСЬ / EDIT REVIEWS HERE
+  // 📝 РЕДАКТИРОВАНИЕ ОТЗЫВОВ / EDIT REVIEWS HERE
   // --------------------------------------------------------------------------
-  // Чтобы добавить новый отзыв, скопируйте объект внутри скобок {} и вставьте его через запятую.
-  // To add a new review, copy an object inside {} and paste it with a comma.
+  // Чтобы добавить новый отзыв, скопируйте блок внутри {} и вставьте через запятую.
+  
   const reviews = [
     {
       id: 1,
-      name: "Malika Karimova", // Имя студента / Student Name
-      role: "IELTS 7.5", // Роль или результат / Role or Result
-      text: "Pizza Academy полностью изменила мой подход к изучению языка. Уроки проходят невероятно интересно!", // Текст отзыва / Review Text
-      avatar: "MK", // Инициалы для аватарки / Initials
-      color: "bg-blue-100 text-blue-600" // Цвет аватарки (Tailwind classes)
+      name: "Malika Karimova", // Имя
+      role: "IELTS 7.5", // Результат или курс
+      text: "Pizza Academy полностью изменила мой подход к изучению языка. Уроки проходят невероятно интересно!", // Текст отзыва
+      avatar: "MK", // Инициалы (если нет фото)
+      // Если хотите фото: замените avatar на 'image' и вставьте ссылку на фото. (Потребуется небольшая правка в коде отображения ниже)
+      // Для простоты сейчас используются цвета и буквы.
+      color: "bg-blue-100 text-blue-600" // Цвет кружочка
     },
     {
       id: 2,
@@ -51,14 +54,22 @@ export const Reviews: React.FC = () => {
       avatar: "SA",
       color: "bg-rose-100 text-rose-600"
     }
-    // ДОБАВЬТЕ СЮДА НОВЫЙ ОТЗЫВ / ADD NEW REVIEW HERE
+    // 👇 Вставьте новый отзыв здесь (раскомментируйте и измените):
+    // {
+    //   id: 6,
+    //   name: "Имя Фамилия",
+    //   role: "Курс",
+    //   text: "Текст вашего отзыва здесь...",
+    //   avatar: "ИФ",
+    //   color: "bg-indigo-100 text-indigo-600"
+    // }
   ];
 
   return (
     <section className="py-24 bg-slate-50 dark:bg-slate-800 transition-colors duration-300 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* ЗАГОЛОВОК СЕКЦИИ / SECTION HEADER */}
+        {/* ЗАГОЛОВОК СЕКЦИИ */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">
             Что говорят студенты
@@ -69,10 +80,7 @@ export const Reviews: React.FC = () => {
           </p>
         </div>
 
-        {/* 
-            КОНТЕЙНЕР СЛАЙДЕРА / SLIDER CONTAINER 
-            overflow-x-auto позволяет скроллить по горизонтали
-        */}
+        {/* КОНТЕЙНЕР СЛАЙДЕРА */}
         <div className="flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory no-scrollbar px-4 md:px-0">
           
           {reviews.map((review) => (
@@ -89,18 +97,25 @@ export const Reviews: React.FC = () => {
               </p>
 
               <div className="flex items-center gap-4 border-t border-slate-100 dark:border-slate-800 pt-6">
+                
                 {/* АВАТАРКА / AVATAR */}
+                {/* 
+                   🖼️ КАК ДОБАВИТЬ ФОТО:
+                   Если вы хотите использовать фото вместо букв, замените блок ниже на тег <img>.
+                   Пример:
+                   <img src="ссылка_на_фото.jpg" className="w-12 h-12 rounded-full object-cover" />
+                */}
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg ${review.color}`}>
                   {review.avatar}
                 </div>
                 
-                {/* ИМЯ И РОЛЬ / NAME AND ROLE */}
+                {/* ИМЯ И РОЛЬ */}
                 <div>
                   <h4 className="font-bold text-slate-900 dark:text-white">{review.name}</h4>
                   <p className="text-sm text-blue-600 font-medium">{review.role}</p>
                 </div>
                 
-                {/* ЗВЕЗДЫ / STARS */}
+                {/* ЗВЕЗДЫ */}
                 <div className="ml-auto flex text-orange-400">
                   <Star size={16} fill="currentColor" />
                   <Star size={16} fill="currentColor" />
@@ -112,7 +127,7 @@ export const Reviews: React.FC = () => {
             </div>
           ))}
 
-          {/* КАРТОЧКА "ДОБАВИТЬ ОТЗЫВ" (Опционально) / CALL TO ACTION CARD */}
+          {/* КАРТОЧКА "ДОБАВИТЬ ОТЗЫВ" */}
           <div className="flex-shrink-0 w-[300px] md:w-[350px] bg-blue-600 p-8 rounded-[2rem] shadow-xl flex flex-col items-center justify-center text-center text-white snap-center cursor-pointer hover:bg-blue-700 transition-colors">
              <h3 className="text-2xl font-black mb-2">Ваш отзыв?</h3>
              <p className="opacity-90 mb-6">Мы будем рады узнать ваше мнение о Pizza Academy!</p>

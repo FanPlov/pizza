@@ -1,38 +1,43 @@
+
 import React from 'react';
 import { useSettings } from '../contexts/SettingsContext';
 
 export const Courses: React.FC = () => {
   const { t } = useSettings();
 
-  // Design based on Screenshot 2: Colorful Cards
+  // --------------------------------------------------------------------------
+  // 🎨 ЦВЕТА КУРСОВ
+  // Здесь можно изменить цвета карточек (bgColor) и цвета текста (textColor).
+  // Используйте hex коды (например #FCD385) или классы Tailwind.
+  // --------------------------------------------------------------------------
   const courses = [
     {
       id: 'applicants',
-      title: t.course_applicants_title,
+      title: t.course_applicants_title, // Текст берется из файла translations.ts
       description: t.course_applicants_desc,
-      bgColor: 'bg-[#FCD385]', // Orange/Yellowish
-      textColor: 'text-[#4a3b25]',
+      bgColor: 'bg-[#FCD385]', // 🟨 Оранжевый/Желтый фон
+      textColor: 'text-[#4a3b25]', // Темный текст
     },
     {
       id: 'school',
       title: t.course_school_title,
       description: t.course_school_desc,
-      bgColor: 'bg-[#D8D4F2]', // Lavender
-      textColor: 'text-[#362f5e]',
+      bgColor: 'bg-[#D8D4F2]', // 🟪 Светло-фиолетовый фон
+      textColor: 'text-[#362f5e]', // Темно-фиолетовый текст
     },
     {
       id: 'hobby',
       title: t.course_hobby_title,
       description: t.course_hobby_desc,
-      bgColor: 'bg-[#bbf7d0]', // Light Green
-      textColor: 'text-[#14532d]',
+      bgColor: 'bg-[#bbf7d0]', // 🟩 Зеленый фон
+      textColor: 'text-[#14532d]', // Темно-зеленый текст
     }
   ];
 
   return (
     <section id="courses" className="py-12 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Vertical Stack of Cards as per Screenshot 2 */}
+        {/* Vertical Stack of Cards */}
         <div className="space-y-6">
           {courses.map((course) => (
             <div 

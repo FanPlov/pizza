@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Pizza, Instagram, Send } from 'lucide-react';
 import { useSettings } from '../contexts/SettingsContext';
@@ -25,17 +26,28 @@ export const Footer: React.FC = () => {
 
           <div className="flex flex-col md:items-end gap-4">
             <div className="text-left md:text-right text-base font-medium space-y-1 text-slate-500 dark:text-slate-400">
+              {/* 📍 ИЗМЕНИТЬ АДРЕС И ТЕЛЕФОН */}
               <p>123 Education Street, Tashkent</p>
               <p className="font-bold text-slate-900 dark:text-white text-lg">+998 90 123 45 67</p>
               <p className="text-blue-600">info@pizza-academy.uz</p>
             </div>
 
-            {/* Social Icons */}
+            {/* 📱 СОЦИАЛЬНЫЕ СЕТИ - Измените ссылки в href="..." */}
             <div className="flex gap-3">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="bg-slate-100 dark:bg-slate-800 p-3 rounded-full text-pink-600 hover:bg-pink-50 dark:hover:bg-slate-700 transition-colors">
+              <a 
+                href="https://instagram.com" // <-- Вставьте ссылку на Instagram сюда
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-slate-100 dark:bg-slate-800 p-3 rounded-full text-pink-600 hover:bg-pink-50 dark:hover:bg-slate-700 transition-colors"
+              >
                 <Instagram size={24} />
               </a>
-              <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" className="bg-slate-100 dark:bg-slate-800 p-3 rounded-full text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-700 transition-colors">
+              <a 
+                href="https://telegram.org" // <-- Вставьте ссылку на Telegram сюда
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-slate-100 dark:bg-slate-800 p-3 rounded-full text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-700 transition-colors"
+              >
                 <Send size={24} />
               </a>
             </div>
