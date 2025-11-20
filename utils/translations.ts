@@ -16,7 +16,7 @@ export const translations = {
     // --- Главный экран (Hero) ---
     hero_tagline: 'Набор открыт на 2025 год',
     hero_title: 'Изучайте английский язык быстро и эффективно', // Главный заголовок
-    hero_desc: 'Специализированная подготовка к IELTS, CEFR. Мы предоставляем минималистичную и сфокусированную среду.', // Описание под заголовком
+    hero_desc: '', // Описание под заголовком
     hero_joined: '500+ студентов', // Плашка "Присоединилось"
     
     // --- Форма регистрации ---
@@ -24,7 +24,7 @@ export const translations = {
     form_name_placeholder: 'Ваше имя и фамилия',
     form_phone_label: 'Ваш номер телефона',
     form_phone_placeholder: '+998901234567',
-    form_button: 'Зарегистрироваться', // Текст на кнопке
+    form_button: 'Записатся', // Текст на кнопке
     form_disclaimer: 'Нажимая кнопку, вы соглашаетесь с нашей публичной офертой!',
     form_sent_title: 'Заявка отправлена!',
     form_sent_desc: 'Мы свяжемся с вами в ближайшее время.',
@@ -69,7 +69,7 @@ export const translations = {
     // --- Bosh sahifa ---
     hero_tagline: '2025 yil uchun qabul ochiq',
     hero_title: 'Ingliz tilini tez va samarali o\'rganing',
-    hero_desc: 'IELTS, CEFR va General English uchun maxsus tayyorgarlik.',
+    hero_desc: '',
     hero_joined: '500+ talaba',
     
     // --- Ro'yxatdan o'tish formasi ---
@@ -77,7 +77,7 @@ export const translations = {
     form_name_placeholder: 'Ismingiz va familiyangiz',
     form_phone_label: 'Telefon raqamingiz',
     form_phone_placeholder: '+998901234567',
-    form_button: 'Ro\'yxatdan o\'tish',
+    form_button: 'Yozilish',
     form_disclaimer: 'Tugmani bosish orqali siz ommaviy ofertaga rozilik bildirasiz!',
     form_sent_title: 'Ariza yuborildi!',
     form_sent_desc: 'Tez orada siz bilan bog\'lanamiz.',
