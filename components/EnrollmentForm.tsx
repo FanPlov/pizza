@@ -11,20 +11,19 @@ export const EnrollmentForm: React.FC = () => {
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   // ---------------------------------------------------------
-  // ⚙️ НАСТРОЙКА GOOGLE SHEETS / GOOGLE SHEETS SETUP
+  // ⚙️ НАСТРОЙКА GOOGLE SHEETS
   // ---------------------------------------------------------
-  // 1. Создайте скрипт в Google Таблице (как я описывал в инструкции).
-  // 2. Скопируйте URL веб-приложения (Web App URL).
-  // 3. Вставьте его ниже в кавычки.
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/AKfycbwas5u7P5drUHCZb1VVtDUK8LUV1z4tIL3GHVdG5IlLNxMqZfdKaUVLNrwiD_ovPeoa/exec"; // <-- ВСТАВЬТЕ ССЫЛКУ СЮДА (Пример: "https://script.google.com/.../exec")
+  // 1. Вставьте ссылку Web App URL ниже.
+  // 2. Убедитесь, что в Apps Script права доступа стоят "Anyone" (Все).
+  const GOOGLE_SCRIPT_URL = ""; // <-- ВСТАВЬТЕ ССЫЛКУ СЮДА
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Если ссылка пустая, просто показываем анимацию (для теста)
     if (!GOOGLE_SCRIPT_URL) {
-        console.warn("⚠️ Ссылка на Google Script не установлена! Данные не сохранятся.");
+        console.warn("⚠️ Ссылка на Google Script не установлена!");
+        // Имитация успеха для теста
         setTimeout(() => {
             setIsSubmitted(true);
             setIsLoading(false);
@@ -33,26 +32,23 @@ export const EnrollmentForm: React.FC = () => {
     }
 
     try {
-        // Отправляем данные в Google Таблицу
+        // ИСПОЛЬЗУЕМ FORMDATA (Самый надежный способ)
+        const data = new FormData();
+        data.append('name', formData.name);
+        data.append('phone', formData.phone);
+
         await fetch(GOOGLE_SCRIPT_URL, {
             method: "POST",
-            mode: "no-cors", // Важно для Google Script
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: formData.name,
-                phone: formData.phone,
-                date: new Date().toLocaleString()
-            })
+            body: data,
+            mode: "no-cors" // Это важно: мы не читаем ответ (он opaque), но данные отправляются
         });
 
-        // Успех!
+        // Считаем, что если ошибок сети нет, то все ок
         setIsSubmitted(true);
         setFormData({ name: '', phone: '' });
     } catch (error) {
         console.error("Ошибка отправки:", error);
-        alert("Произошла ошибка при отправке формы. Попробуйте позже.");
+        alert("Ошибка сети. Проверьте подключение.");
     } finally {
         setIsLoading(false);
     }
@@ -108,6 +104,7 @@ export const EnrollmentForm: React.FC = () => {
             <div className="relative">
               <input
                 type="text"
+                name="name" 
                 required
                 onFocus={() => setFocusedField('name')}
                 onBlur={() => setFocusedField(null)}
@@ -128,6 +125,7 @@ export const EnrollmentForm: React.FC = () => {
             <div className="relative">
               <input
                 type="tel"
+                name="phone"
                 required
                 onFocus={() => setFocusedField('phone')}
                 onBlur={() => setFocusedField(null)}
