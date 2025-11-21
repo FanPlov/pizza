@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
                 rel="noopener noreferrer"
                 className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-sm shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center"
               >
-                Student App
+                Telegram
               </a>
             </nav>
 
