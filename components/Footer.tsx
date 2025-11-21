@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
         
         <div className="mt-12 pt-8 border-t border-slate-100 dark:border-slate-800 text-center text-sm text-slate-400 font-medium flex flex-col md:flex-row justify-between items-center gap-4">
           <p>&copy; {currentYear} Pizza Academy. {t.footer_rights}</p>
-          <p className="text-xs opacity-50">Designed with ❤️ in Tashkent</p>
+          <p className="text-xs opacity-50">Developed by Asadbek</p>
         </div>
       </div>
     </footer>
