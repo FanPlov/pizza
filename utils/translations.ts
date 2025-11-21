@@ -16,7 +16,7 @@ export const translations = {
     // --- Главный экран (Hero) ---
     hero_tagline: 'Набор открыт на 2025 год',
     hero_title: 'Изучайте английский язык быстро и эффективно', // Главный заголовок
-    hero_desc: 'Специализированная подготовка к IELTS, CEFR. Мы предоставляем минималистичную и сфокусированную среду.', // Описание под заголовком
+    hero_desc: '', // Описание удалено по запросу
     hero_joined: '500+ студентов', // Плашка "Присоединилось"
     
     // --- Форма регистрации ---
@@ -69,7 +69,7 @@ export const translations = {
     // --- Bosh sahifa ---
     hero_tagline: '2025 yil uchun qabul ochiq',
     hero_title: 'Ingliz tilini tez va samarali o\'rganing',
-    hero_desc: 'IELTS, CEFR va General English uchun maxsus tayyorgarlik.',
+    hero_desc: '',
     hero_joined: '500+ talaba',
     
     // --- Ro'yxatdan o'tish formasi ---

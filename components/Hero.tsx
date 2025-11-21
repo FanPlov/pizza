@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { EnrollmentForm } from './EnrollmentForm';
 import { useSettings } from '../contexts/SettingsContext';
@@ -6,7 +7,7 @@ export const Hero: React.FC = () => {
   const { t } = useSettings();
 
   return (
-    <section className="relative pt-40 pb-24 bg-blue-500 dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
+    <section className="relative pt-28 pb-24 bg-blue-500 dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
       
       {/* Cool Animated Background Blobs - Blue Theme */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -19,14 +20,12 @@ export const Hero: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           
           {/* Left Side: Text Content */}
-          <div className="flex-1 space-y-8 text-center lg:text-left">
+          <div className="flex-1 space-y-6 text-center lg:text-left">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9] drop-shadow-sm">
               {t.hero_title}
             </h1>
             
-            <p className="text-lg md:text-2xl text-blue-50 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium opacity-90">
-              {t.hero_desc}
-            </p>
+            {/* Removed Description Text as requested */}
 
             {/* "Cool" stats badge */}
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 text-white text-base font-bold mt-4 hover:bg-white/20 transition-colors cursor-pointer">
@@ -39,7 +38,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Right Side: Enrollment Form */}
-          <div className="w-full lg:w-[420px] shrink-0 relative z-10 mt-8 lg:-mt-12 transform transition-all hover:scale-[1.01] duration-500">
+          <div className="w-full lg:w-[420px] shrink-0 relative z-10 mt-4 lg:-mt-8 transform transition-all hover:scale-[1.01] duration-500">
              <EnrollmentForm />
           </div>
 
