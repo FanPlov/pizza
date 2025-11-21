@@ -5,6 +5,7 @@ import { useSettings } from '../contexts/SettingsContext';
 
 export const EnrollmentForm: React.FC = () => {
   const { t } = useSettings();
+  // В state храним только 9 цифр номера (без +998)
   const [formData, setFormData] = useState({ name: '', phone: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,17 +14,40 @@ export const EnrollmentForm: React.FC = () => {
   // ---------------------------------------------------------
   // ⚙️ НАСТРОЙКА GOOGLE SHEETS
   // ---------------------------------------------------------
-  // 1. Вставьте ссылку Web App URL ниже.
+  // 1. Вставьте ссылку Web App URL ниже внутри кавычек.
   // 2. Убедитесь, что в Apps Script права доступа стоят "Anyone" (Все).
   const GOOGLE_SCRIPT_URL = ""; // <-- ВСТАВЬТЕ ССЫЛКУ СЮДА
+
+  // ---------------------------------------------------------
+  // 📞 ЛОГИКА ВВОДА ТЕЛЕФОНА (Упрощенная для удобства)
+  // ---------------------------------------------------------
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Разрешаем вводить ТОЛЬКО цифры
+    const val = e.target.value.replace(/\D/g, '');
+    
+    // Ограничиваем длину до 9 цифр (так как код 998 уже есть визуально)
+    if (val.length <= 9) {
+      setFormData({ ...formData, phone: val });
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
+    // Собираем полный номер для отправки
+    const fullPhone = `+998${formData.phone}`;
+    
+    // Проверка: должно быть ровно 9 цифр в поле (итого 13 символов с +)
+    if (formData.phone.length < 9) {
+        alert("Пожалуйста, введите корректный номер телефона (код оператора и номер, 9 цифр).");
+        setIsLoading(false);
+        return;
+    }
+    
     if (!GOOGLE_SCRIPT_URL) {
         console.warn("⚠️ Ссылка на Google Script не установлена!");
-        // Имитация успеха для теста
+        // Имитация успеха для теста (если скрипт не настроен)
         setTimeout(() => {
             setIsSubmitted(true);
             setIsLoading(false);
@@ -35,15 +59,14 @@ export const EnrollmentForm: React.FC = () => {
         // ИСПОЛЬЗУЕМ FORMDATA (Самый надежный способ)
         const data = new FormData();
         data.append('name', formData.name);
-        data.append('phone', formData.phone);
+        data.append('phone', fullPhone); // Отправляем полный номер
 
         await fetch(GOOGLE_SCRIPT_URL, {
             method: "POST",
             body: data,
-            mode: "no-cors" // Это важно: мы не читаем ответ (он opaque), но данные отправляются
+            mode: "no-cors" // Это важно для Google Scripts
         });
 
-        // Считаем, что если ошибок сети нет, то все ок
         setIsSubmitted(true);
         setFormData({ name: '', phone: '' });
     } catch (error) {
@@ -123,16 +146,22 @@ export const EnrollmentForm: React.FC = () => {
               {t.form_phone_label}
             </label>
             <div className="relative">
+              {/* ВИЗУАЛЬНЫЙ ПРЕФИКС +998 */}
+              <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 font-bold text-lg pointer-events-none select-none border-r border-slate-300 dark:border-slate-600 pr-3">
+                +998
+              </div>
+
               <input
                 type="tel"
                 name="phone"
                 required
+                onChange={handlePhoneChange}
                 onFocus={() => setFocusedField('phone')}
                 onBlur={() => setFocusedField(null)}
-                className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-100 dark:border-slate-700 focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-300 dark:placeholder-slate-600 outline-none transition-all duration-300 text-lg font-semibold shadow-sm group-hover/input:border-blue-200 dark:group-hover/input:border-blue-900"
-                placeholder={t.form_phone_placeholder}
+                // pl-24 (padding-left) создает отступ для префикса +998
+                className="w-full pl-24 pr-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-100 dark:border-slate-700 focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-300 dark:placeholder-slate-600 outline-none transition-all duration-300 text-lg font-semibold shadow-sm group-hover/input:border-blue-200 dark:group-hover/input:border-blue-900"
+                placeholder="90 123 45 67"
                 value={formData.phone}
-                onChange={e => setFormData({ ...formData, phone: e.target.value })}
                 disabled={isLoading}
               />
             </div>
