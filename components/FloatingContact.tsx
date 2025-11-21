@@ -10,7 +10,7 @@ export const FloatingContact: React.FC = () => {
     <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4 pointer-events-none">
       
       {/* Выпадающие кнопки */}
-      <div className={`flex flex-col gap-3 transition-all duration-300 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className={`flex flex-col gap-3 transition-all duration-300 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
         
         {/* 
            🔵 TELEGRAM КНОПКА 
@@ -20,7 +20,7 @@ export const FloatingContact: React.FC = () => {
           href="https://t.me/pizza_academy" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center gap-3 bg-[#229ED9] hover:bg-[#1e8bbf] text-white px-5 py-3 rounded-full shadow-lg transition-transform hover:scale-105 font-bold pointer-events-auto"
+          className={`flex items-center gap-3 bg-[#229ED9] hover:bg-[#1e8bbf] text-white px-5 py-3 rounded-full shadow-lg transition-transform hover:scale-105 font-bold ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
         >
           <Send size={20} />
           Telegram
@@ -32,7 +32,7 @@ export const FloatingContact: React.FC = () => {
         */}
         <a 
           href="tel:+998901234567" 
-          className="flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg transition-transform hover:scale-105 font-bold pointer-events-auto"
+          className={`flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg transition-transform hover:scale-105 font-bold ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
         >
           <Phone size={20} />
           Позвонить
