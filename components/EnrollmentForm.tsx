@@ -15,7 +15,7 @@ export const EnrollmentForm: React.FC = () => {
   // ---------------------------------------------------------
   // 1. Вставьте ссылку Web App URL ниже.
   // 2. Убедитесь, что в Apps Script права доступа стоят "Anyone" (Все).
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQ1677xN7GvrHvAB7bJdWbJ1-rYzoUUEpTqIXrUQBQ6kZnlLaI1fvT8ByURw0rK-EiAg/exec"; // <-- ВСТАВЬТЕ ССЫЛКУ СЮДА
+  const GOOGLE_SCRIPT_URL = ""; // <-- ВСТАВЬТЕ ССЫЛКУ СЮДА
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
