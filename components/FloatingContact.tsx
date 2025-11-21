@@ -39,15 +39,22 @@ export const FloatingContact: React.FC = () => {
 
       </div>
 
-      {/* Главная круглая кнопка (FAB) */}
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className={`p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 ${
-           isOpen ? 'bg-slate-800 text-white rotate-90' : 'bg-blue-600 text-white'
-        }`}
-      >
-        {isOpen ? <X size={28} /> : <MessageCircle size={28} />}
-      </button>
+      {/* Главная круглая кнопка (FAB) с пульсацией */}
+      <div className="relative">
+        {/* Эффект пульсации (виден только когда меню закрыто) */}
+        {!isOpen && (
+          <span className="absolute inset-0 rounded-full bg-blue-400 opacity-75 animate-ping"></span>
+        )}
+        
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className={`relative z-10 p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 ${
+             isOpen ? 'bg-slate-800 text-white rotate-90' : 'bg-blue-600 text-white'
+          }`}
+        >
+          {isOpen ? <X size={28} /> : <MessageCircle size={28} />}
+        </button>
+      </div>
     </div>
   );
 };
