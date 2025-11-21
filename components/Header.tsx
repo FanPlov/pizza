@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Pizza, Menu, X, Settings } from 'lucide-react';
 import { useSettings } from '../contexts/SettingsContext';
@@ -45,9 +46,19 @@ export const Header: React.FC = () => {
                 <Settings size={24} />
               </button>
 
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-sm shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95">
+              {/* 
+                 ✏️ КНОПКА "STUDENT APP" (ВЕРСИЯ ДЛЯ ПК)
+                 1. href="..." -> Вставьте ссылку на ваше приложение или сайт входа.
+                 2. Student App -> Поменяйте текст внутри тега.
+              */}
+              <a 
+                href="https://student.pizza-academy.uz" // <-- Вставьте ссылку сюда
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-sm shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center"
+              >
                 Student App
-              </button>
+              </a>
             </nav>
 
             {/* Mobile Menu Button */}
@@ -79,9 +90,19 @@ export const Header: React.FC = () => {
                   {link.name}
                 </a>
               ))}
-              <button className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-4 rounded-xl font-bold shadow-lg shadow-blue-500/30">
+              
+              {/* 
+                 ✏️ КНОПКА "STUDENT APP" (МОБИЛЬНАЯ ВЕРСИЯ)
+                 Меняйте ссылку и текст здесь тоже.
+              */}
+              <a 
+                href="https://student.pizza-academy.uz" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-4 rounded-xl font-bold shadow-lg shadow-blue-500/30 text-center"
+              >
                 Student App
-              </button>
+              </a>
             </div>
           </div>
         )}
